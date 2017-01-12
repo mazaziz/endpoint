@@ -1,5 +1,5 @@
 # endpoint
-A HTTP request router for Go.
+A robust HTTP request router for Go.
 
 Usage example:
 ```
