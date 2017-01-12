@@ -1,10 +1,6 @@
 package endpoint
 
-import (
-	"strings"
-//	"fmt"
-//	"os"
-)
+import "strings"
 
 type path struct {
 	raw string
@@ -29,16 +25,3 @@ func (p *path) next() *string {
 	p.pos++
 	return &p.segments[p.pos]
 }
-
-//func (p *path) dump() {
-//	util.Dumpl("path", p.raw)
-//	util.Dumpl("pos", p.pos)
-//	if p.segments == nil {
-//		fmt.Println("path not parsed")
-//	} else {
-//		fmt.Println("path segments =")
-//		for i := 0; i < len(p.segments); i++ {
-//			fmt.Fprintln(os.Stdout, fmt.Sprintf(" [%d] => '%s'", i, p.segments[i]))
-//		}
-//	}
-//}
