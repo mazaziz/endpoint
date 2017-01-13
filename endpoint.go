@@ -21,16 +21,10 @@ func New() *endpoint {
 	e := &endpoint{}
 	e.root = e.newNode()
 	e.Handler404 = func(w http.ResponseWriter, r *http.Request) {
-		w.Header().Set("Content-Type", "text/plain; charset=utf-8")
-		w.Header().Set("X-Content-Type-Options", "nosniff")
-		w.WriteHeader(404)
-		fmt.Fprintln(w, "Not Found")
+		http.Error(w, "Not Found", http.StatusNotFound)
 	}
 	e.Handler405 = func(w http.ResponseWriter, r *http.Request) {
-		w.Header().Set("Content-Type", "text/plain; charset=utf-8")
-		w.Header().Set("X-Content-Type-Options", "nosniff")
-		w.WriteHeader(405)
-		fmt.Fprintln(w, "Method Not Allowed")
+		http.Error(w, "Method Not Allowed", http.StatusMethodNotAllowed)
 	}
 	return e
 }
