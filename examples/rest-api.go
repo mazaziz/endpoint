@@ -3,7 +3,7 @@ package main
 import (
 	"fmt"
 	"net/http"
-	"endpoint"
+	"github.com/mazaziz/endpoint"
 )
 
 func home(w http.ResponseWriter, r *http.Request) {
