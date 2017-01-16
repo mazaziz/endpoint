@@ -29,6 +29,10 @@ func New() *endpoint {
 	return e
 }
 
+func (e *endpoint) GetPaths() []string {
+	return e.root.getPaths("/")
+}
+
 func (e *endpoint) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 	p := newPath(r.URL.Path)
 	n := e.root

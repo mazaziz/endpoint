@@ -14,6 +14,27 @@ type node struct {
 	dynamicParam string
 }
 
+func (n *node) getPaths(path string) []string {
+	p := make([]string, 0, 4)
+	if nil != n.methods {
+		for m, _ := range n.methods {
+			p = append(p, m + " " + path)
+		}
+	}
+	if path == "/" {
+		path = ""
+	}
+	if nil != n.staticLinks {
+		for s, sn := range n.staticLinks {
+			p = append(p, sn.getPaths(path + "/" + s)...)
+		}
+	}
+	if nil != n.dynamicLink {
+		p = append(p, n.dynamicLink.getPaths(path + "/:" + n.dynamicParam)...)
+	}
+	return p
+}
+
 func (n *node) makeDynamicLink(name string) *node {
 	if n.staticLinks != nil {
 		panic("cant make dynamic link when there are static links")
