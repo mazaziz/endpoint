@@ -1,7 +1,7 @@
 # endpoint
 A robust HTTP request router for Go.
 
-Usage example:
+Example:
 ```
 e := endpoint.New()
 e.Match("id", `^\d+$`)
